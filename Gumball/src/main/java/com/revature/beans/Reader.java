@@ -7,23 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="AUTHOR")
-public class Author {
+@Table(name="READER")
+public class Reader {
 	@Id
-	@Column(name="AUTHOR_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="READER_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reader")
+	@SequenceGenerator(name="reader", sequenceName="READER_SEQUENCE")
 	private int id;
 	@Column(name="USERNAME")
-	private String Username;
+	private String username;
 	@Column(name="EMAIL")
 	private String email;
 	@Column(name="PASSWORD")
 	private String password;
-	@OneToMany(mappedBy="author")
-	private ArrayList<Article> articles;
+	@Column(name="CREDIT_CARD")
+	private String CreditCardNumber;
+	private ArrayList<Article> favorites;
+	private ArrayList<Comment> comments;
 }
