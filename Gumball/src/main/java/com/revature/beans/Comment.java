@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+
 import javax.persistence.Table;
 
 @Entity
@@ -17,11 +17,7 @@ import javax.persistence.Table;
 public class Comment {
 	@Id
 	@Column(name="COMMENT_ID")
-<<<<<<< HEAD
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment")
-=======
-	@GeneratedValue(strategy=GenerationType.AUTO)
->>>>>>> d00292207c02a4d2a1e24293e8d99ca4ab6d2625
 	private int id;
 	@Column(name="COMMENT_BODY", nullable=false)
 	private String body;
