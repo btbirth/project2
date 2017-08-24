@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.JoinTable;
+=======
+>>>>>>> d00292207c02a4d2a1e24293e8d99ca4ab6d2625
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -18,7 +21,11 @@ import javax.persistence.Table;
 public class Reader {
 	@Id
 	@Column(name="READER_ID")
+<<<<<<< HEAD
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reader")
+=======
+	@GeneratedValue(strategy=GenerationType.AUTO)
+>>>>>>> d00292207c02a4d2a1e24293e8d99ca4ab6d2625
 	private int id;
 	
 	@Column(name="USERNAME", nullable=false, unique=true)
@@ -32,11 +39,16 @@ public class Reader {
 	
 	@Column(name="CREDIT_CARD", nullable=false)
 	private String CreditCardNumber;
+<<<<<<< HEAD
 	
 	@ManyToMany
 	@JoinTable(name="FAVORITES_TABLE")
 	private ArrayList<Article> favorites;
 	
+=======
+	@ManyToMany(mappedBy="reader")
+	private ArrayList<Article> favorites;
+>>>>>>> d00292207c02a4d2a1e24293e8d99ca4ab6d2625
 	@OneToMany(mappedBy="reader")
 	private ArrayList<Comment> comments;
 
