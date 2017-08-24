@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,8 +17,7 @@ import javax.persistence.Table;
 public class Reader {
 	@Id
 	@Column(name="READER_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reader")
-	@SequenceGenerator(name="reader", sequenceName="READER_SEQUENCE")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="USERNAME")
 	private String username;
@@ -26,6 +27,8 @@ public class Reader {
 	private String password;
 	@Column(name="CREDIT_CARD")
 	private String CreditCardNumber;
+	@ManyToMany(mappedBy="reader")
 	private ArrayList<Article> favorites;
+	@OneToMany(mappedBy="reader")
 	private ArrayList<Comment> comments;
 }

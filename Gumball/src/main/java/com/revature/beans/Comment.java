@@ -16,8 +16,7 @@ import javax.persistence.Table;
 public class Comment {
 	@Id
 	@Column(name="COMMENT_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment")
-	@SequenceGenerator(name="comment", sequenceName="COMMENT_SEQUENCE")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="COMMENT_BODY")
 	private String body;
