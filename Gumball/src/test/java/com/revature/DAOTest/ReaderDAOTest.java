@@ -3,6 +3,7 @@ package com.revature.DAOTest;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -19,6 +20,7 @@ public class ReaderDAOTest {
 		context = new ClassPathXmlApplicationContext("dao-beans.xml");
 	}
 	
+	@Ignore
 	@Test
 	public void testFindAll() {
 		ReaderDAO bean = context.getBean(ReaderDAO.class);
