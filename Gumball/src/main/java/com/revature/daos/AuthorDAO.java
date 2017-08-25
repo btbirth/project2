@@ -33,7 +33,7 @@ public class AuthorDAO implements DataAccessObject {
 	}
 	
 	public List<Author> findAll(){
-		return sessionFactory.getCurrentSession().createQuery("FROM AUTHOR").list();
+		return sessionFactory.getCurrentSession().createQuery("FROM Author").list();
 	}
 	public Author findById (int id){
 		return (Author) sessionFactory.getCurrentSession()
