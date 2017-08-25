@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Reader {
 	@Id
 	@Column(name="READER_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reader")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	@Column(name="USERNAME", nullable=false, unique=true)
@@ -35,17 +35,17 @@ public class Reader {
 	
 	@ManyToMany
 	@JoinTable(name="FAVORITES_TABLE")
-	private ArrayList<Article> favorites;
+	private List<Article> favorites;
 	
 	@OneToMany(mappedBy="reader")
-	private ArrayList<Comment> comments;
+	private List<Comment> comments;
 
 	public Reader() {
 		super();
 	}
 
 	public Reader(int id, String username, String email, String password, String creditCardNumber,
-			ArrayList<Article> favorites, ArrayList<Comment> comments) {
+			List<Article> favorites, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -96,19 +96,19 @@ public class Reader {
 		CreditCardNumber = creditCardNumber;
 	}
 
-	public ArrayList<Article> getFavorites() {
+	public List<Article> getFavorites() {
 		return favorites;
 	}
 
-	public void setFavorites(ArrayList<Article> favorites) {
+	public void setFavorites(List<Article> favorites) {
 		this.favorites = favorites;
 	}
 
-	public ArrayList<Comment> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(ArrayList<Comment> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 

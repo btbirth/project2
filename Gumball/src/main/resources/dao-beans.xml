@@ -13,8 +13,8 @@
 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="url" value="#{systemEnvironment['DB_URL']}"/>
-		<property name="username" value="demo"/>
-		<property name="password" value="demo"/>
+		<property name="username" value="BrettBirth"/>
+		<property name="password" value="Madmanmadman11"/>
 	</bean>
 	<!-- #{systemEnvironment['DB_URL']} -->
 	<!-- 2. SessionFactory -->

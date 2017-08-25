@@ -1,8 +1,9 @@
 package com.revature.beans;
 
 import java.sql.Blob;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,21 +42,21 @@ public class Article {
 	private Blob image;
 	
 	@ManyToMany(mappedBy="favorites")
-	private ArrayList<Reader> readers;
+	private List<Reader> readers;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_CREATED", nullable=false)
 	private Date created;
 	
 	@OneToMany(mappedBy="article")
-	private ArrayList<Comment> comments;
+	private List<Comment> comments;
 
 	public Article() {
 		super();
 	}
 
-	public Article(int id, String title, String body, Author author, Blob image, ArrayList<Reader> readers,
-			Date created, ArrayList<Comment> comments) {
+	public Article(int id, String title, String body, Author author, Blob image, List<Reader> readers,
+			Date created, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -107,11 +108,11 @@ public class Article {
 		this.image = image;
 	}
 
-	public ArrayList<Reader> getReaders() {
+	public List<Reader> getReaders() {
 		return readers;
 	}
 
-	public void setReaders(ArrayList<Reader> readers) {
+	public void setReaders(List<Reader> readers) {
 		this.readers = readers;
 	}
 
@@ -123,11 +124,11 @@ public class Article {
 		this.created = created;
 	}
 
-	public ArrayList<Comment> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(ArrayList<Comment> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 

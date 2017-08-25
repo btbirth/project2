@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,13 +29,13 @@ public class Author {
 	private String password;
 	
 	@OneToMany(mappedBy="author")
-	private ArrayList<Article> articles;
+	private List<Article> articles;
 
 	public Author() {
 		super();
 	}
 
-	public Author(int id, String username, String email, String password, ArrayList<Article> articles) {
+	public Author(int id, String username, String email, String password, List<Article> articles) {
 		super();
 		this.id = id;
 		Username = username;
@@ -76,11 +76,11 @@ public class Author {
 		this.password = password;
 	}
 
-	public ArrayList<Article> getArticles() {
+	public List<Article> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(ArrayList<Article> articles) {
+	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
 

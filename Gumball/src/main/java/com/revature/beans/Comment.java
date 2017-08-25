@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COMMENT")
+@Table(name="COMMENTS")
 public class Comment {
 	@Id
 	@Column(name="COMMENT_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="COMMENT_BODY", nullable=false)
 	private String body;
