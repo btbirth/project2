@@ -1,12 +1,13 @@
 package com.revature.beans;
 
 import java.sql.Blob;
-import java.util.List;
+import java.util.Set;
 import java.util.Date;
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Article {
 	@Column(name="ARTICLE_BODY", nullable=false)
 	private String body;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(nullable=false, name="AUTHOR_ID")
 	private Author author;
 	
@@ -42,21 +43,21 @@ public class Article {
 	private Blob image;
 	
 	@ManyToMany(mappedBy="favorites")
-	private List<Reader> readers;
+	private Set<Reader> readers;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_CREATED", nullable=false)
 	private Date created;
 	
-	@OneToMany(mappedBy="article")
-	private List<Comment> comments;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="article")
+	private Set<Comment> comments;
 
 	public Article() {
 		super();
 	}
 
-	public Article(int id, String title, String body, Author author, Blob image, List<Reader> readers,
-			Date created, List<Comment> comments) {
+	public Article(int id, String title, String body, Author author, Blob image, Set<Reader> readers,
+			Date created, Set<Comment> comments) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -108,11 +109,11 @@ public class Article {
 		this.image = image;
 	}
 
-	public List<Reader> getReaders() {
+	public Set<Reader> getReaders() {
 		return readers;
 	}
 
-	public void setReaders(List<Reader> readers) {
+	public void setReaders(Set<Reader> readers) {
 		this.readers = readers;
 	}
 
@@ -124,11 +125,11 @@ public class Article {
 		this.created = created;
 	}
 
-	public List<Comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 

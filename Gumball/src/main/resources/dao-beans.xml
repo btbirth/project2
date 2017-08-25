@@ -35,10 +35,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<!-- 4. DAO 
-	<bean name="gameDAO" class="com.revature.data.GameDAO">
+	 
+	<bean name="ReaderDAO" class="com.revature.daos.ReaderDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>-->
+	</bean>
+	<bean name="AuthorDAO" class="com.revature.daos.AuthorDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 
 </beans>

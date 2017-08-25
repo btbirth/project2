@@ -1,9 +1,10 @@
 package com.revature.beans;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,10 +22,10 @@ public class Comment {
 	private int id;
 	@Column(name="COMMENT_BODY", nullable=false)
 	private String body;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(nullable=false, name="READER_ID")
 	private Reader reader;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(nullable=false, name="ARTICLE_ID")
 	private Article article;
 	public Comment() {

@@ -1,9 +1,10 @@
 package com.revature.beans;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,13 +30,13 @@ public class Author {
 	private String password;
 	
 	@OneToMany(mappedBy="author")
-	private List<Article> articles;
+	private Set<Article> articles;
 
 	public Author() {
 		super();
 	}
 
-	public Author(int id, String username, String email, String password, List<Article> articles) {
+	public Author(int id, String username, String email, String password, Set<Article> articles) {
 		super();
 		this.id = id;
 		Username = username;
@@ -76,11 +77,11 @@ public class Author {
 		this.password = password;
 	}
 
-	public List<Article> getArticles() {
+	public Set<Article> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(List<Article> articles) {
+	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
 	}
 

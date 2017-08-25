@@ -1,9 +1,10 @@
 package com.revature.beans;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,19 +34,19 @@ public class Reader {
 	@Column(name="CREDIT_CARD", nullable=false)
 	private String CreditCardNumber;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="FAVORITES_TABLE")
-	private List<Article> favorites;
+	private Set<Article> favorites;
 	
-	@OneToMany(mappedBy="reader")
-	private List<Comment> comments;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="reader")
+	private Set<Comment> comments;
 
 	public Reader() {
 		super();
 	}
 
 	public Reader(int id, String username, String email, String password, String creditCardNumber,
-			List<Article> favorites, List<Comment> comments) {
+			Set<Article> favorites, Set<Comment> comments) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -96,19 +97,19 @@ public class Reader {
 		CreditCardNumber = creditCardNumber;
 	}
 
-	public List<Article> getFavorites() {
+	public Set<Article> getFavorites() {
 		return favorites;
 	}
 
-	public void setFavorites(List<Article> favorites) {
+	public void setFavorites(Set<Article> favorites) {
 		this.favorites = favorites;
 	}
 
-	public List<Comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 
