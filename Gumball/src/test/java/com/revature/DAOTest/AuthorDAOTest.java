@@ -39,6 +39,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testFindOne(){
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
 		Author author = bean.findById(1);
