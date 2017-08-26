@@ -29,6 +29,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testFindAll(){
 		LOGGER.setLevel(Level.INFO);
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
@@ -46,6 +47,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testCreate(){
 		Set<Article> articles = new HashSet<Article>();
 		Author author = new Author("Bobby", "bobbyDroppings@gmail.com", "passingword", articles);
@@ -55,6 +57,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testUpdate(){
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
 		Author author = bean.findById(21);
@@ -64,11 +67,12 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testDelete(){
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
 		Author author = bean.findById(21);
 		bean.delete(author);
-		LOGGER.info("I have removed the Author Bobby from the database and have successfully passed the test");
+		LOGGER.info("Author Bobby has been deleted from the database and successfully passed the test");
 	}
 	
 
