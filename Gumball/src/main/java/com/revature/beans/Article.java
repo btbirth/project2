@@ -42,7 +42,7 @@ public class Article {
 	@Column(name="IMAGE",nullable=true)
 	private Blob image;
 	
-	@ManyToMany(mappedBy="favorites")
+	@ManyToMany(fetch=FetchType.EAGER, mappedBy="favorites")
 	private Set<Reader> readers;
 	
 	@Temporal(TemporalType.DATE)
@@ -56,16 +56,14 @@ public class Article {
 		super();
 	}
 
-	public Article(int id, String title, String body, Author author, Blob image, Set<Reader> readers,
-			Date created, Set<Comment> comments) {
+	public Article(String title, String body, Author author, Blob image, Set<Reader> readers, Set<Comment> comments) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.body = body;
 		this.author = author;
 		this.image = image;
 		this.readers = readers;
-		this.created = created;
+		this.created = new Date();
 		this.comments = comments;
 	}
 

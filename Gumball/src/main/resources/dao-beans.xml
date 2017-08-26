@@ -42,6 +42,8 @@
 	<bean name="AuthorDAO" class="com.revature.daos.AuthorDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean name="ArticleDAO" class="com.revature.daos.ArticleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 </beans>
