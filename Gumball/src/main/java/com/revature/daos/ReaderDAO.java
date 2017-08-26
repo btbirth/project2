@@ -13,20 +13,28 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.beans.Reader;
 
 public class ReaderDAO {
+	
 	private SessionFactory sessionFactory;
-
+	@Transactional
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	@Transactional
 	public void create(Object reader) {
-		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().save(reader);
 	}
-
+	@Transactional
 	public Reader findById(int id) {
 
-		return (Reader) sessionFactory.getCurrentSession().createCriteria(Reader.class).add(Restrictions.eq("id", id))
+		return (Reader) sessionFactory.getCurrentSession().createCriteria(Reader.class)
+				.add(Restrictions.eq("id", id))
+				.list().get(0);
+	}
+	@Transactional
+	public Reader findByUsername(String username) {
+
+		return (Reader) sessionFactory.getCurrentSession().createCriteria(Reader.class)
+				.add(Restrictions.eq("username", username))
 				.list().get(0);
 	}
 
@@ -38,15 +46,13 @@ public class ReaderDAO {
 				  .createQuery("FROM Reader").list();
 		 
 	}
-
+	@Transactional
 	public void update(Object obj) {
-		// TODO Auto-generated method stub
-
+		sessionFactory.getCurrentSession().saveOrUpdate(obj);
 	}
-
+	@Transactional
 	public void delete(Object obj) {
-		// TODO Auto-generated method stub
-
+		sessionFactory.getCurrentSession().delete(obj);
 	}
 
 }

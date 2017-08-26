@@ -27,4 +27,51 @@ public class ReaderDAOTest {
 		List<Reader> readers =  bean.findAll();
 		System.out.println(readers.get(0));
 	}
+	@Ignore
+	@Test
+	public void testFindById() {
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		Reader reader = bean.findById(1);
+		System.out.println(reader);
+	}
+	
+	
+	@Test
+	public void testFindByName() {
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		System.out.println(bean.findByUsername("Banops"));
+	}
+	
+	@Ignore
+	@Test
+	public void testCreateReader(){	
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		Reader reader = new Reader(((Double)(Math.random()*100)).toString(), ((Double)(Math.random()*10)).toString(), "madman", ((Double)(Math.random()*10)).toString(), null, null);
+		reader.setId(1000);
+		bean.create(reader);
+		
+		System.out.println("User Created");
+	}
+	
+	@Ignore
+	@Test
+	public void testDeleteReader(){
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		Reader reader = new Reader(((Double)(Math.random()*100)).toString(), ((Double)(Math.random()*10)).toString(), "This reader should not be here", ((Double)(Math.random()*10)).toString(), null, null);
+		bean.create(reader);
+		bean.delete(reader);
+		System.out.println("User Deleted");
+		
+		
+	}
+	
+	@Ignore
+	@Test
+	public void testUpdateReader(){
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		Reader reader = bean.findById(1);
+		reader.setCreditCardNumber(((Double)(Math.random()*100)).toString());
+		bean.update(reader);
+		System.out.println("User updated");
+	}
 }

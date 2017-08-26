@@ -45,10 +45,9 @@ public class Reader {
 		super();
 	}
 
-	public Reader(int id, String username, String email, String password, String creditCardNumber,
+	public Reader( String username, String email, String password, String creditCardNumber,
 			Set<Article> favorites, Set<Comment> comments) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
