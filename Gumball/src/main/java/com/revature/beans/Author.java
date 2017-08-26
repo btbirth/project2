@@ -29,16 +29,15 @@ public class Author {
 	@Column(name="PASSWORD", nullable=false)
 	private String password;
 	
-	@OneToMany(mappedBy="author")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="author")
 	private Set<Article> articles;
 
 	public Author() {
 		super();
 	}
 
-	public Author(int id, String username, String email, String password, Set<Article> articles) {
+	public Author(String username, String email, String password, Set<Article> articles) {
 		super();
-		this.id = id;
 		Username = username;
 		this.email = email;
 		this.password = password;
