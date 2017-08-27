@@ -1,6 +1,7 @@
 package com.revature.DAOTest;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -9,7 +10,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.revature.beans.Article;
 import com.revature.beans.Reader;
+import com.revature.daos.ArticleDAO;
 import com.revature.daos.ReaderDAO;
 
 public class ReaderDAOTest {
@@ -35,7 +38,7 @@ public class ReaderDAOTest {
 		System.out.println(reader);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testFindByName() {
 		ReaderDAO bean = context.getBean(ReaderDAO.class);
@@ -73,5 +76,24 @@ public class ReaderDAOTest {
 		reader.setCreditCardNumber(((Double)(Math.random()*100)).toString());
 		bean.update(reader);
 		System.out.println("User updated");
+	}
+	@Ignore
+	@Test
+	public void testSetFavorite() {
+		ReaderDAO bean = context.getBean(ReaderDAO.class);
+		Reader reader = bean.findById(24);
+		
+		//get article to favorite
+		ArticleDAO articleDAO = context.getBean(ArticleDAO.class);
+		Article article = articleDAO.findArticleById(1);
+		
+		//set and save favorite
+		Set<Article> favorites = reader.getFavorites();
+		favorites.add(article);
+		reader.setFavorites(favorites);
+		
+		//update reader -> update favorites Table
+		bean.update(reader);
+		System.out.println("Favorite Added?");
 	}
 }

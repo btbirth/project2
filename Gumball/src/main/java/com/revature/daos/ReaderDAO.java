@@ -54,5 +54,11 @@ public class ReaderDAO {
 	public void delete(Object obj) {
 		sessionFactory.getCurrentSession().delete(obj);
 	}
+//	@Transactional
+//	public void setFavorite(int readerId,int articleId) {
+//		sessionFactory.getCurrentSession()
+//			.createCriteria(arg0)
+//	}
+	
 
 }

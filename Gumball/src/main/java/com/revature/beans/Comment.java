@@ -31,9 +31,9 @@ public class Comment {
 	public Comment() {
 		super();
 	}
-	public Comment(int id, String body, Reader reader, Article article) {
+	public Comment(String body, Reader reader, Article article) {
 		super();
-		this.id = id;
+	
 		this.body = body;
 		this.reader = reader;
 		this.article = article;
