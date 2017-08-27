@@ -66,19 +66,19 @@ public class ArticleDAOTest {
 	@Test
 	@Ignore
 	public void testUpdate(){
-		AuthorDAO bean = context.getBean(AuthorDAO.class);
-		Author author = bean.findById(21);
-		author.setEmail("iamliving@gmail.com");
-		bean.update(author);
-		LOGGER.info("I have updated the Author Bobby, changed his email, and have successfully passed the test");
+		ArticleDAO bean = context.getBean(ArticleDAO.class);
+		Article article = bean.findArticleById(51);
+		article.setTitle("Fresh Prince of Reston");
+		bean.update(article);
+		LOGGER.info("I have updated the Article, changed the title, and have successfully passed the test");
 	}
 	
 	@Test
 	@Ignore
 	public void testDelete(){
-		AuthorDAO bean = context.getBean(AuthorDAO.class);
-		Author author = bean.findById(21);
-		bean.delete(author);
-		LOGGER.info("Author Bobby has been deleted from the database and successfully passed the test");
+		ArticleDAO bean = context.getBean(ArticleDAO.class);
+		Article article = bean.findArticleById(51);
+		bean.delete(article);
+		LOGGER.info("An article has been deleted from the database and successfully passed the test");
 	}
 }
