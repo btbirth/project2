@@ -40,7 +40,7 @@ public class Author {
 
 	public Author(String username, String email, String password, Set<Article> articles) {
 		super();
-		username = username;
+		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.articles = articles;

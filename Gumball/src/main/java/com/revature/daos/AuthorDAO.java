@@ -16,7 +16,6 @@ public class AuthorDAO{
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
-		// TODO Auto-generated method stub
 		this.sessionFactory = sessionFactory;
 	}
 

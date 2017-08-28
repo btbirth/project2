@@ -48,5 +48,12 @@
 	<bean name="CommentDAO" class="com.revature.daos.CommentDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean name="DataService" class="com.revature.service.DataService">
+		
+	</bean>
+	<bean name="BusinessService" class="com.revature.service.BusinessService">
+		
+	</bean>
+	
 
 </beans>

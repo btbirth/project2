@@ -1,5 +1,7 @@
 package com.revature.DAOTest;
 
+import static org.junit.Assert.assertNull;
+
 import java.util.List;
 import java.util.Set;
 
@@ -38,11 +40,15 @@ public class ReaderDAOTest {
 		System.out.println(reader);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testFindByName() {
 		ReaderDAO bean = context.getBean(ReaderDAO.class);
-		System.out.println(bean.findByUsername("Banops"));
+		Reader reader = bean.findByUsername("Banops");
+		Reader notReader = bean.findByUsername("Userdoesnotexist");
+		System.out.println(reader);
+		assertNull(notReader);
+		System.out.println(notReader);
 	}
 	
 	@Ignore

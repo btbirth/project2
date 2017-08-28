@@ -32,10 +32,16 @@ public class ReaderDAO {
 	}
 	@Transactional
 	public Reader findByUsername(String username) {
-
-		return (Reader) sessionFactory.getCurrentSession().createCriteria(Reader.class)
+		
+		List<Reader> users = sessionFactory.getCurrentSession()
+				.createCriteria(Reader.class)
 				.add(Restrictions.eq("username", username))
-				.list().get(0);
+				.list();
+		
+		if(users.isEmpty()) {
+			return null;
+		}
+		return users.get(0);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -20,6 +20,7 @@ public class CommentDAOTest {
 	public static void initialize() {
 		context = new ClassPathXmlApplicationContext("dao-beans.xml");
 	}
+	
 	@Ignore
 	@Test
 	public void testCreate() {
