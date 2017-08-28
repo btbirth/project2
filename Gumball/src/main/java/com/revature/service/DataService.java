@@ -21,26 +21,60 @@ import com.revature.daos.ReaderDAO;
 public class DataService {
 	private static ApplicationContext context = new ClassPathXmlApplicationContext("dao-beans.xml");
 	
+	
+	public void createArticle(Article article) {
+		ArticleDAO dao = context.getBean(ArticleDAO.class);
+		dao.create(article);
+	}
 	public Article viewArticle(Article article) {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		return dao.findArticleById(article.getId());
+	}
+	public void updateArticle(Article article) {
+		ArticleDAO dao = context.getBean(ArticleDAO.class);
+		dao.update(article);
+	}
+	public void deleteArticle(Article article) {
+		ArticleDAO dao = context.getBean(ArticleDAO.class);
+		dao.delete(article);
 	}
 	public void createReader(Reader reader) {
 		ReaderDAO dao = context.getBean(ReaderDAO.class);
 		dao.create(reader);		
 	}
+	public void updateReader(Reader reader) {
+		ReaderDAO dao = context.getBean(ReaderDAO.class);
+		dao.update(reader);
+	}
+	public void deleteReader(Reader reader) {
+		ReaderDAO dao = context.getBean(ReaderDAO.class);
+		dao.delete(reader);
+	}
 	public void createAuthor(Author author) {
 		AuthorDAO dao = context.getBean(AuthorDAO.class);
 		dao.create(author);
+	}
+	public void updateAuthor(Author author) {
+		AuthorDAO dao = context.getBean(AuthorDAO.class);
+		dao.update(author);
+	}
+	public void deleteAuthor(Author author) {
+		AuthorDAO dao = context.getBean(AuthorDAO.class);
+		dao.delete(author);
 	}
 	public void createComment(Comment comment) {
 		CommentDAO dao = context.getBean(CommentDAO.class);
 		dao.create(comment);
 	}
-	public void createArticle(Article article) {
-		ArticleDAO dao = context.getBean(ArticleDAO.class);
-		dao.create(article);
+	public void updateComment(Comment comment) {
+		CommentDAO dao = context.getBean(CommentDAO.class);
+		dao.update(comment);
 	}
+	public void deleteComment(Comment comment) {
+		CommentDAO dao = context.getBean(CommentDAO.class);
+		dao.Delete(comment);
+	}
+
 	public void addFavorite(Reader reader, Article article) {
 		ReaderDAO dao = context.getBean(ReaderDAO.class);
 		Set<Article> favorites = reader.getFavorites();
