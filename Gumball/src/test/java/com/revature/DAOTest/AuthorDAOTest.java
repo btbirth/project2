@@ -39,12 +39,10 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
-	@Ignore
 	public void testFindOne(){
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
-		Author author = bean.findById(1);
-		LOGGER.info(author.toString());
-		
+		Author author = bean.findByUsername("The Writer");
+		//LOGGER.info(author.toString());
 	}
 	
 	@Test

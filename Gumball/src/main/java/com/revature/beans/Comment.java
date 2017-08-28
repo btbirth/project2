@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="COMMENTS")
 public class Comment {
@@ -50,12 +52,14 @@ public class Comment {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	@JsonIgnore
 	public Reader getReader() {
 		return reader;
 	}
 	public void setReader(Reader reader) {
 		this.reader = reader;
 	}
+	@JsonIgnore
 	public Article getArticle() {
 		return article;
 	}

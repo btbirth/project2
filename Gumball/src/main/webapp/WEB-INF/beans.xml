@@ -24,6 +24,6 @@
 	</bean>
 
 	<!-- Spring core/context: find beans and auto-register -->
-	<context:component-scan base-package="com.revature.beans" />
+	<context:component-scan base-package="com.revature" />
 
 </beans>

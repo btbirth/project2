@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="AUTHOR")
 public class Author {
@@ -21,7 +23,7 @@ public class Author {
 	private int id;
 	
 	@Column(name="USERNAME", nullable=false, unique=true)
-	private String Username;
+	private String username;
 	
 	@Column(name="EMAIL", nullable=false, unique=true)
 	private String email;
@@ -38,7 +40,7 @@ public class Author {
 
 	public Author(String username, String email, String password, Set<Article> articles) {
 		super();
-		Username = username;
+		username = username;
 		this.email = email;
 		this.password = password;
 		this.articles = articles;
@@ -53,11 +55,11 @@ public class Author {
 	}
 
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		Username = username;
+		username = username;
 	}
 
 	public String getEmail() {
@@ -86,7 +88,7 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", Username=" + Username + ", email=" + email + ", password=" + password
+		return "Author [id=" + id + ", Username=" + username + ", email=" + email + ", password=" + password
 				+ ", articles=" + articles + "]";
 	}
 	

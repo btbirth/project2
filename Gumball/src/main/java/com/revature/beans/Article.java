@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="ARTICLE")
 public class Article {
@@ -91,8 +93,8 @@ public class Article {
 		this.body = body;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public String getAuthor() {
+		return author.getUsername();
 	}
 
 	public void setAuthor(Author author) {
@@ -106,7 +108,7 @@ public class Article {
 	public void setImage(Blob image) {
 		this.image = image;
 	}
-
+	@JsonIgnore
 	public Set<Reader> getReaders() {
 		return readers;
 	}
