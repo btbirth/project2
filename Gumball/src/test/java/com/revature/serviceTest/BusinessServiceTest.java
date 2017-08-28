@@ -34,7 +34,7 @@ public class BusinessServiceTest {
 		BusinessService service = context.getBean(BusinessService.class);
 		Reader goodUserGoodPass = new Reader("Banops", null, "password", null, null, null);
 		Reader goodUserBadPass = new Reader("Banops", null, "passwor", null, null, null);
-		Reader badUser = new Reader("Banops", null, "password", null, null, null);
+		Reader badUser = new Reader("B", null, "password", null, null, null);
 		Reader reader = service.readerValidate(goodUserGoodPass);
 		System.out.println(reader);
 		Assert.assertNotNull(reader);
