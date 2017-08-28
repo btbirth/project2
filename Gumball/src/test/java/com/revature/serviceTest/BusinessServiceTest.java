@@ -1,7 +1,6 @@
 package com.revature.serviceTest;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Assert;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,9 +25,9 @@ public class BusinessServiceTest {
 		Author badUser = new Author("The Write", "a", "password", null);
 		Author author = service.authorValidate(goodUserGoodPass);
 		System.out.println(author);
-		assertNotNull(author);
-		assertNull(service.authorValidate(goodUserBadPass));
-		assertNull(service.authorValidate(badUser));
+		Assert.assertNotNull(author);
+		Assert.assertNull(service.authorValidate(goodUserBadPass));
+		Assert.assertNull(service.authorValidate(badUser));
 	}
 	@Test
 	public void testReaderLogin() {
@@ -38,8 +37,8 @@ public class BusinessServiceTest {
 		Reader badUser = new Reader("Banops", null, "password", null, null, null);
 		Reader reader = service.readerValidate(goodUserGoodPass);
 		System.out.println(reader);
-		assertNotNull(reader);
-		assertNull(service.readerValidate(goodUserBadPass));
-		assertNull(service.readerValidate(badUser));
+		Assert.assertNotNull(reader);
+		Assert.assertNull(service.readerValidate(goodUserBadPass));
+		Assert.assertNull(service.readerValidate(badUser));
 	}
 }

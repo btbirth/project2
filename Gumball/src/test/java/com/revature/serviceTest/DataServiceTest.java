@@ -1,6 +1,7 @@
 package com.revature.serviceTest;
 
-import static org.junit.Assert.assertNotNull;
+import org.junit.Assert;
+
 
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -31,7 +32,7 @@ public class DataServiceTest {
 		Author author = new Author("WriterTwo", "writer@two.com", "password", null);
 		service.createAuthor(author);
 		AuthorDAO checker = context.getBean(AuthorDAO.class);
-		assertNotNull(checker.findByUsername(author.getUsername()));
+		Assert.assertNotNull(checker.findByUsername(author.getUsername()));
 		System.out.println("Created");
 	}
 	@Ignore
@@ -41,7 +42,7 @@ public class DataServiceTest {
 		Reader reader = new Reader("Dopis", "you@me.com", "madman", "1112224333", null, null);
 		service.createReader(reader);
 		ReaderDAO checker = context.getBean(ReaderDAO.class);
-		assertNotNull(checker.findByUsername(reader.getUsername()));
+		Assert.assertNotNull(checker.findByUsername(reader.getUsername()));
 		System.out.println("Created");
 	}
 	@Ignore
