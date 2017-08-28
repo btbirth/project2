@@ -1,6 +1,6 @@
 package com.revature.service;
 
-import org.junit.BeforeClass;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
