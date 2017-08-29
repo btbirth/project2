@@ -14,8 +14,14 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
+
 @Entity
 @Table(name="READER")
+
 public class Reader {
 	@Id
 	@Column(name="READER_ID")
@@ -45,6 +51,14 @@ public class Reader {
 		super();
 	}
 
+	public Reader( String username, String email, String password, String creditCardNumber
+			) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		CreditCardNumber = creditCardNumber;
+	}
 	public Reader( String username, String email, String password, String creditCardNumber,
 			Set<Article> favorites, Set<Comment> comments) {
 		super();
