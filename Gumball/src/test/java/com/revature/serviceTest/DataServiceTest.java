@@ -8,7 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Service;
+
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
@@ -50,9 +50,8 @@ public class DataServiceTest {
 	public void TestCreateArticle() {
 		DataService service = context.getBean(DataService.class);
 		AuthorDAO aDAO = context.getBean(AuthorDAO.class);
-		Article article = new Article("The nigh is end", "We are all fine, don't worry", aDAO.findById(1), null, null, null);
+		Article article = new Article("The niasdfgh is end", "We are asdfall fine, don't worry", aDAO.findById(1), null, null, null);
 		service.createArticle(article);
 		System.out.println("Created");
 	}
-
 }

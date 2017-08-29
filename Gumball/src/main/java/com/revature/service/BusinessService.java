@@ -1,8 +1,9 @@
 package com.revature.service;
 
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import com.revature.beans.Author;
 import com.revature.beans.Reader;
@@ -10,10 +11,11 @@ import com.revature.daos.AuthorDAO;
 import com.revature.daos.ReaderDAO;
 
 public class BusinessService {
-	private static ApplicationContext context = new ClassPathXmlApplicationContext("dao-beans.xml");
-	
-	
-	
+	private ApplicationContext context;
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		this.context = context;
+		
+	}
 	public Author authorValidate(Author author) {
 		AuthorDAO aDAO = context.getBean(AuthorDAO.class);
 		Author user = aDAO.findByUsername(author.getUsername());

@@ -5,11 +5,12 @@ package com.revature.service;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.beans.BeansException;
+
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationContextAware;
+
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
@@ -21,10 +22,13 @@ import com.revature.daos.CommentDAO;
 import com.revature.daos.ReaderDAO;
 
 
-public class DataService {
+public class DataService implements ApplicationContextAware {
 	
-	private static ApplicationContext context = new ClassPathXmlApplicationContext("dao-beans.xml");
-
+	private ApplicationContext context;
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		this.context = context;
+		
+	}
 	public void createArticle(Article article) {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		dao.create(article);
@@ -96,4 +100,5 @@ public class DataService {
 		reader.setFavorites(favorites);
 		dao.update(reader);
 	}
+
 }
