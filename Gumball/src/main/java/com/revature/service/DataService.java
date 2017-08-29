@@ -2,8 +2,11 @@ package com.revature.service;
 
 
 
+import java.util.List;
 import java.util.Set;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -17,14 +20,18 @@ import com.revature.daos.AuthorDAO;
 import com.revature.daos.CommentDAO;
 import com.revature.daos.ReaderDAO;
 
-@Service
+
 public class DataService {
+	
 	private static ApplicationContext context = new ClassPathXmlApplicationContext("dao-beans.xml");
-	
-	
+
 	public void createArticle(Article article) {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		dao.create(article);
+	}
+	public List<Article> viewAll(){
+		ArticleDAO dao = context.getBean(ArticleDAO.class);
+		return dao.findAllArticles();
 	}
 	public Article viewArticle(Article article) {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
