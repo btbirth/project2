@@ -28,6 +28,12 @@ public class AuthorController {
 	private DataService dataService;
 	@Autowired
 	private BusinessService businessService;
+	@Autowired
+	private AuthorDAO dao;
+	
+	public void setAuthorDAO(AuthorDAO dao){
+		this.dao = dao;
+	}
 	
 	
 	public void setDataService(DataService dataService) {
@@ -65,11 +71,11 @@ public class AuthorController {
 		dataService.deleteAuthor(author);
 	} 
 	
-//	@RequestMapping(value="/Author/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-//	@ResponseBody
-//	public List<Author> findAll(){
-//		return dataService.
-//	}	
+	@RequestMapping(value="/Author/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Author> findAll(){
+		return dao.findAll();
+	}	
 	
 	@RequestMapping(value="/Author/logout", method= RequestMethod.POST)
 	@ResponseBody

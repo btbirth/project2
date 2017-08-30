@@ -19,12 +19,10 @@ public class AuthorDAO{
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Transactional(isolation=Isolation.READ_COMMITTED, 
-			propagation=Propagation.REQUIRED,
-			rollbackFor=Exception.class)
-	public void create(Object object) {
+	@Transactional
+	public void create(Object author) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().save(object);
+		sessionFactory.getCurrentSession().save(author);
 	}
 
 	@Transactional(isolation=Isolation.READ_COMMITTED, 

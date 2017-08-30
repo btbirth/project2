@@ -62,7 +62,7 @@ public class ReaderController {
 	@RequestMapping(value="/Reader/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void update(@Valid @RequestBody Reader reader){
-		dao.update(reader);
+		dataService.updateReader(reader);
 	} 
 	
 	@RequestMapping(value="/Reader/delete", method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
