@@ -45,7 +45,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 		Author author = bean.findByUsername("The Writer");
 		//LOGGER.info(author.toString());
 	}
-	
+	@Ignore
 	@Test
 	public void testCreate(){
 		Set<Article> articles = new HashSet<Article>();
