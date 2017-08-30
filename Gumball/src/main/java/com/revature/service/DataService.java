@@ -33,7 +33,7 @@ public class DataService implements ApplicationContextAware {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		dao.create(article);
 	}
-	public List<Article> viewAll(){
+	public List<Article> viewAllArticles(){
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		return dao.findAllArticles();
 	}

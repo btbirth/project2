@@ -34,8 +34,6 @@ public class ReaderController {
 	private ReaderDAO dao;
 	
 	
-	
-	
 	public void setDataService(DataService dataService) {
 		this.dataService = dataService;
 	}
@@ -70,16 +68,14 @@ public class ReaderController {
 	@RequestMapping(value="/Reader/delete", method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void delete(@Valid @RequestBody Reader reader){
-		dataService.createReader(reader);
+		dataService.deleteReader(reader);
 	} 
 	
-
 	@RequestMapping(value="/Reader/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Reader> findAll(){
 		return dao.findAll();
 	}
-	
 	
 	@RequestMapping(value="/Reader/logout", method= RequestMethod.POST)
 	@ResponseBody

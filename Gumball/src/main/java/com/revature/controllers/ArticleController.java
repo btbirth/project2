@@ -21,45 +21,42 @@ import com.revature.service.DataService;
 public class ArticleController {
 
 	@Autowired
-	private ArticleDAO dao;
-	@Autowired
-	private DataService service;
+	private DataService dataService;
 	
-	
-	public void setArticleDAO(ArticleDAO dao){
-		this.dao = dao;
+	public void setDataService(DataService dataService){
+		this.dataService = dataService;
 	}
 	
-	public void setDataService(DataService service){
-		this.service = service;
-	}
 	
 	@RequestMapping(value="/Article/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void create(@Valid @RequestBody Article article){
-		//service.createArticle(article);
-		dao.create(article);
+		dataService.createArticle(article);
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Article/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void update(@Valid @RequestBody Article article){
-		service.updateArticle(article);
-		//dao.update(article);
+		dataService.updateArticle(article);
 	} 
 	
 	@RequestMapping(value="/Article/delete", method=RequestMethod.DELETE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void delete(@Valid @RequestBody Article article){
-		service.deleteArticle(article);
-//		dao.delete(article);
+		dataService.deleteArticle(article);
 	} 
 	
 	@RequestMapping(value="/Article/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Article> findAll(){
+		return dataService.viewAllArticles();
+	}
+	
+	@RequestMapping(value="/Article/findArticle", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Article findArticle(@Valid @RequestBody Article article){
 		//return dao.findAllArticles();
-		return service.viewAll();
+		 return dataService.viewArticle(article);
 	}
 	
 }
