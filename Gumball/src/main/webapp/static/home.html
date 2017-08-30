@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gumball Magazine</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<ul class="nav nav-tabs">
+	<li class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		Login as Writer 
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+   			<li>
+   			<form action="/Reader/login" href="/pages/dashone.html">
+   				<input type="text" placeholder="username"/>
+   				<input type="password" placeholder="password"/>
+   				<button type="submit" class="btn btn-success"  >Login</button>
+   			</form>
+   			</li>
+    	</ul>
+	</li>
+	<li class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		Login as Subscriber 
+		<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+   			<li>
+   			<form action="/Reader/login" >
+   				<input type="text" placeholder="username"/>
+   				<input type="password" placeholder="password"/>
+   				<button type="submit" class="btn btn-success"  >Login</button>
+   			</form>
+   			</li>
+    	</ul>
+	</li>
+</ul>
+</body>
+</html>
