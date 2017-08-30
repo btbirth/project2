@@ -39,6 +39,7 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
+	@Ignore
 	public void testFindOne(){
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
 		Author author = bean.findByUsername("The Writer");
@@ -46,10 +47,9 @@ private static final Logger LOGGER = Logger.getLogger(AuthorDAOTest.class.getNam
 	}
 	
 	@Test
-	@Ignore
 	public void testCreate(){
 		Set<Article> articles = new HashSet<Article>();
-		Author author = new Author("Bobby", "bobbyDroppings@gmail.com", "passingword", articles);
+		Author author = new Author("The Cleaner", "cleanDroppings@gmail.com", "escape", articles);
 		AuthorDAO bean = context.getBean(AuthorDAO.class);
 		bean.create(author);
 		LOGGER.info("I have created an author and have successfully passed the test");

@@ -18,7 +18,6 @@
 	<!-- ViewResolver does forwards/redirect -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/pages/" />
 		<property name="suffix" value=".html" />
 		<!-- give ViewResolver a String "home" and it resolves as: /pages/home.html -->
 	</bean>
