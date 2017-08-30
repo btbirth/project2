@@ -26,11 +26,11 @@ public class BusinessService implements ApplicationContextAware {
 		}
 		return null;
 	}
-	public Reader readerValidate(Reader reader) {
+	public Reader readerValidate(String username, String password) {
 		ReaderDAO aDAO = context.getBean(ReaderDAO.class);
-		Reader user = aDAO.findByUsername(reader.getUsername());
+		Reader user = aDAO.findByUsername(username);
 		if(user!=null) {
-			if(user.getPassword().equals(reader.getPassword())) {
+			if(user.getPassword().equals(password)) {
 				return user;
 			}
 		}
