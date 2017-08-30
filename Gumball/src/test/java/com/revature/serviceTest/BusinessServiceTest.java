@@ -35,10 +35,10 @@ public class BusinessServiceTest {
 		Reader goodUserGoodPass = new Reader("Banops", null, "password", null, null, null);
 		Reader goodUserBadPass = new Reader("Banops", null, "passwor", null, null, null);
 		Reader badUser = new Reader("B", null, "password", null, null, null);
-		Reader reader = service.readerValidate(goodUserGoodPass);
+		Reader reader = service.readerValidate(goodUserGoodPass.getUsername(),goodUserGoodPass.getPassword());
 		System.out.println(reader);
 		Assert.assertNotNull(reader);
-		Assert.assertNull(service.readerValidate(goodUserBadPass));
-		Assert.assertNull(service.readerValidate(badUser));
+		Assert.assertNull(service.readerValidate(goodUserBadPass.getUsername(),goodUserBadPass.getPassword()));
+		Assert.assertNull(service.readerValidate(badUser.getUsername(),badUser.getPassword()));
 	}
 }
