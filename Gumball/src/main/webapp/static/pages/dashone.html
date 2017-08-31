@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	Dash1
-</body>
-</html>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Uploaded</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="article in articles">
+		<td>{{article.title}} </td>
+		<td>{{article.author.username}} </td>
+		<td>{{article.created}} </td>
+		</tr>
+	</tbody>
+</table>

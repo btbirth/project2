@@ -15,10 +15,17 @@ body{
 	background-color: #0b3372;
 }
 
-div{
+.centerMeNowGod{
+text-align: center;
+	
+}
+.bodyView{
 	height: 900px;
 	width: 900px;
+	background-color: #eee;
+	border-radius: 5px;
 	margin: auto;
 	text-align: center;
 	opacity: .7;
 }
+
