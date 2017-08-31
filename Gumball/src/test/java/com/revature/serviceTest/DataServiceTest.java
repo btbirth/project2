@@ -1,5 +1,7 @@
 package com.revature.serviceTest;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 
 
@@ -8,7 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
+import org.springframework.http.HttpStatus;
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
@@ -35,15 +37,12 @@ public class DataServiceTest {
 		Assert.assertNotNull(checker.findByUsername(author.getUsername()));
 		System.out.println("Created");
 	}
-	@Ignore
+	
 	@Test
 	public void TestCreateReader() {
 		DataService service = context.getBean(DataService.class);
-		Reader reader = new Reader("Dopis", "you@me.com", "madman", "1112224333", null, null);
-		service.createReader(reader);
-		ReaderDAO checker = context.getBean(ReaderDAO.class);
-		Assert.assertNotNull(checker.findByUsername(reader.getUsername()));
-		System.out.println("Created");
+		Reader reader = new Reader("Dopis", "you@me.com", "madman", "1112224333");
+		assertEquals(HttpStatus.CONFLICT, service.createReader(reader.getUsername(),reader.getEmail(),reader.getPassword(),reader.getCreditCardNumber())); 
 	}
 	@Ignore
 	@Test

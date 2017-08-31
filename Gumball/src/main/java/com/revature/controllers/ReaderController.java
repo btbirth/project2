@@ -4,10 +4,13 @@ import java.util.List;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,18 +49,31 @@ public class ReaderController {
 		this.dao = dao;
 	}
 
-	@RequestMapping(value="/Reader/login", method= RequestMethod.POST, consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpServletRequest req) {
-		
+	@RequestMapping(value="/Reader/login", method= RequestMethod.POST)
+	public ResponseEntity<Reader> login(
+			@RequestParam(value = "username", required = false) String username, 
+			@RequestParam(value = "password", required = false) String password, 
+			HttpServletRequest req) {
 		Reader user = businessService.readerValidate(username, password);
 		req.getSession().setAttribute("user", user);
-		return new ModelAndView("dashone");
+		
+		return new ResponseEntity<Reader>(user,HttpStatus.I_AM_A_TEAPOT);
+		//return new ModelAndView("dashone");
 	}
 	
-	@RequestMapping(value="/Reader/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
-	public void create(@Valid @RequestBody Reader reader){
-		dataService.createReader(reader);
+	public ResponseEntity<Void> create(
+			@RequestParam(value="username", required=true) String username, 
+			@RequestParam(value="email", required=true) String email, 
+			@RequestParam(value="password", required=true) String password, 
+			@RequestParam(value="ccn", required=true) String creditCardNumber,
+			HttpServletResponse resp){
+		dataService.createReader(username,email,password,creditCardNumber);
+		
+		
+		resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());
+		return new ResponseEntity<Void>(dataService.createReader(username,email,password,creditCardNumber));	
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Reader/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)

@@ -10,7 +10,8 @@ import org.springframework.beans.BeansException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
@@ -49,9 +50,18 @@ public class DataService implements ApplicationContextAware {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
 		dao.delete(article);
 	}
-	public void createReader(Reader reader) {
-		ReaderDAO dao = context.getBean(ReaderDAO.class);
-		dao.create(reader);		
+	public HttpStatus createReader(String username, String email, String password, String creditCardNumber) {
+		Reader reader = new Reader(username, email, password, creditCardNumber);
+		ReaderDAO dao = context.getBean(ReaderDAO.class);	
+		try {
+			dao.create(reader);
+			return HttpStatus.OK;
+		}catch(Exception e) {
+			return HttpStatus.CONFLICT;
+		}
+			
+	
+
 	}
 	public void updateReader(Reader reader) {
 		ReaderDAO dao = context.getBean(ReaderDAO.class);
