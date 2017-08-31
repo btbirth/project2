@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -63,17 +64,17 @@ public class ReaderController {
 	
 	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
-	public ResponseEntity<Void> create(
+	public void create(
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="email", required=true) String email, 
 			@RequestParam(value="password", required=true) String password, 
 			@RequestParam(value="ccn", required=true) String creditCardNumber,
-			HttpServletResponse resp){
-		dataService.createReader(username,email,password,creditCardNumber);
-		
+			HttpServletResponse resp) throws IOException{
+		//dataService.createReader(username,email,password,creditCardNumber);
+		//resp.sendRedirect("/Gumball/home.html");
 		
 		resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());
-		return new ResponseEntity<Void>(dataService.createReader(username,email,password,creditCardNumber));	
+		//return new ResponseEntity<Object>("",dataService.createReader(username,email,password,creditCardNumber));	
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Reader/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)
