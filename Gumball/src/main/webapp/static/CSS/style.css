@@ -17,11 +17,9 @@ body{
 
 .centerMeNowGod{
 text-align: center;
-	
+margin: auto;	
 }
 .bodyView{
-	height: 900px;
-	width: 900px;
 	background-color: #eee;
 	border-radius: 5px;
 	margin: auto;

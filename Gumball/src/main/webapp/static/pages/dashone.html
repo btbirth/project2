@@ -1,16 +1,10 @@
-<table class="table table-bordered table-striped">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Uploaded</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="article in articles">
-		<td>{{article.title}} </td>
-		<td>{{article.author.username}} </td>
-		<td>{{article.created}} </td>
-		</tr>
-	</tbody>
-</table>
+<div class="container">
+	<div ng-repeat="article in articles" class="col-lg-6 col-md-6 col-sm-4">
+		<div  class="jumbotron">
+			<h1>{{article.title}}</h1>
+			<h2>Written by: {{article.author}}{{username}}</h2>
+			<h2>Submitted on: {{article.created}}</h2>
+			<p>{{article.body}}</p>
+		</div>
+	</div>
+</div>
