@@ -3,7 +3,7 @@ package com.revature.controllers;
 import java.io.IOException;
 import java.util.List;
 
-
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -50,30 +50,37 @@ public class ReaderController {
 		this.dao = dao;
 	}
 
-	@RequestMapping(value="/Reader/login", method= RequestMethod.POST)
-	public ResponseEntity<Reader> login(
+	@RequestMapping(value="/Reader/login", method=RequestMethod.POST)
+	public String login(
 			@RequestParam(value = "username", required = false) String username, 
 			@RequestParam(value = "password", required = false) String password, 
-			HttpServletRequest req) {
+			HttpServletRequest req)  {
+//		String username = req.getParameter("username");
+//		String password = req.getParameter("password");
 		Reader user = businessService.readerValidate(username, password);
-		req.getSession().setAttribute("user", user);
+		System.out.println("here");
+		if(user != null){
+			System.out.println("here");
+			req.getSession().setAttribute("user", user);
+			return "redirect:/pages/index.html";
+		}
+		return "redirect:/pages/home.html";
 		
-		return new ResponseEntity<Reader>(user,HttpStatus.I_AM_A_TEAPOT);
-		//return new ModelAndView("dashone");
 	}
 	
-	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
+	@RequestMapping(value="/Gumball/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
-	public void create(
+	public ModelAndView create(
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="email", required=true) String email, 
 			@RequestParam(value="password", required=true) String password, 
-			@RequestParam(value="ccn", required=true) String creditCardNumber,
-			HttpServletResponse resp) throws IOException{
-		//dataService.createReader(username,email,password,creditCardNumber);
+			@RequestParam(value="ccn", required=true) String creditCardNumber) 
+					throws IOException{
+		dataService.createReader(username,email,password,creditCardNumber);
 		//resp.sendRedirect("/Gumball/home.html");
 		
-		resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());
+		//resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());
+		return new ModelAndView("home");
 		//return new ResponseEntity<Object>("",dataService.createReader(username,email,password,creditCardNumber));	
 	} //auto converts JSON->object
 	

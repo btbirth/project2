@@ -53,8 +53,10 @@ public class Comment {
 		this.body = body;
 	}
 	
-	public int getReader() {
-		return reader.getId();
+
+	public String getReader() {
+		return reader.getUsername();
+
 	}
 	public void setReader(Reader reader) {
 		this.reader = reader;

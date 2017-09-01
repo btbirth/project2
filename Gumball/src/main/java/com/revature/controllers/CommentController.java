@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.beans.Author;
 import com.revature.beans.Comment;
+import com.revature.beans.Reader;
 import com.revature.daos.AuthorDAO;
 import com.revature.daos.CommentDAO;
 import com.revature.service.BusinessService;
@@ -38,7 +40,8 @@ public class CommentController {
 	
 	@RequestMapping(value="/Comment/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
-	public void create(@Valid @RequestBody Comment comment){
+	public void create(@Valid @RequestBody Comment comment, HttpServletRequest req){
+		comment.setReader((Reader)req.getSession().getAttribute("user"));
 		dataService.createComment(comment);
 	} //auto converts JSON->object
 	
@@ -52,11 +55,6 @@ public class CommentController {
 	@ResponseBody // use this to write to response
 	public void delete(@Valid @RequestBody Comment comment){
 		dataService.deleteComment(comment);
-	}
-	@RequestMapping(value="/Comment/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<Comment> findAll(){
-		return dao.findAll();
 	}
 	
 }
