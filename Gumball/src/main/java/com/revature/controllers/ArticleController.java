@@ -1,7 +1,9 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
+import com.revature.beans.Reader;
 import com.revature.daos.ArticleDAO;
 import com.revature.service.DataService;
 
@@ -48,8 +51,17 @@ public class ArticleController {
 	
 	@RequestMapping(value="/Article/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Article> findAll(){
+	public List<Article> findAll(HttpServletRequest req){
+		System.out.println(req.getSession().getAttribute("user"));
 		return dataService.viewAllArticles();
+	}
+	@RequestMapping(value="/Article/favorites", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Article> getFavorites(HttpServletRequest req){
+		System.out.println(req.getSession().getAttribute("user"));
+		Reader reader = (Reader)req.getSession().getAttribute("user");
+		List<Article> favorites = new ArrayList<Article>(reader.getFavorites());
+		return favorites;
 	}
 	
 	@RequestMapping(value="/Article/findArticle", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
@@ -58,5 +70,7 @@ public class ArticleController {
 		//return dao.findAllArticles();
 		 return dataService.viewArticle(article);
 	}
+	
+	
 	
 }

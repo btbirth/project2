@@ -19,7 +19,7 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="suffix" value=".html" />
-		<property name="prefix" value="**/pages"></property>
+		<property name="prefix" value="/pages/"></property>
 		<!-- give ViewResolver a String "home" and it resolves as: /pages/home.html -->
 	</bean>
 

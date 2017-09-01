@@ -52,9 +52,9 @@ public class Comment {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	@JsonIgnore
-	public Reader getReader() {
-		return reader;
+	
+	public String getReader() {
+		return reader.getUsername();
 	}
 	public void setReader(Reader reader) {
 		this.reader = reader;

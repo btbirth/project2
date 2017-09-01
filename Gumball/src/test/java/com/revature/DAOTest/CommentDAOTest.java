@@ -1,5 +1,7 @@
 package com.revature.DAOTest;
 
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,13 +36,13 @@ public class CommentDAOTest {
 		commentDAO.create(new Comment("This is a comment", reader, article));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testFindById() {
 		CommentDAO commentDAO = context.getBean(CommentDAO.class);
 		System.out.println(commentDAO.findById(1));
 	}
-	
+	@Ignore
 	@Test
 	public void testUpdateComment(){
 		CommentDAO commentDAO = context.getBean(CommentDAO.class);
@@ -48,7 +50,7 @@ public class CommentDAOTest {
 		comment.setBody(((Double)(Math.random()*100)).toString());
 		commentDAO.update(comment);
 	}
-	
+	@Ignore
 	@Test
 	public void testDelete() {
 		ArticleDAO articleDAO = context.getBean(ArticleDAO.class);
@@ -62,6 +64,16 @@ public class CommentDAOTest {
 		commentDAO.Delete(comment);
 	}
 	
-	
+	@Test
+	public void testFindAllByArticle() {
+		ArticleDAO articleDAO = context.getBean(ArticleDAO.class);
+		Article article = articleDAO.findArticleById(1);
+		CommentDAO commentDAO = context.getBean(CommentDAO.class);
+		List<Comment> comments = commentDAO.findAllByArticle(article);
+		System.out.println(comments.size());
+		for(int i = 0; i < comments.size() ; i++) {
+			System.out.println(comments.get(i));
+		}
+	}
 	
 }
