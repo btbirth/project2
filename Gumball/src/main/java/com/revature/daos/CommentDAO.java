@@ -1,9 +1,12 @@
 package com.revature.daos;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.beans.Author;
 import com.revature.beans.Comment;
 import com.revature.beans.Reader;
 
@@ -33,5 +36,10 @@ public class CommentDAO {
 	@Transactional
 	public void Delete(Object comment) {
 		sessionFactory.getCurrentSession().delete(comment);
+	}
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Comment> findAll(){
+		return sessionFactory.getCurrentSession().createQuery("FROM Comment").list();
 	}
 }

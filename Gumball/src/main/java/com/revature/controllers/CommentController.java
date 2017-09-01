@@ -28,6 +28,12 @@ public class CommentController {
 	public void setDataService(DataService dataService) {
 		this.dataService = dataService;
 	}
+	@Autowired 
+	private CommentDAO dao;
+	
+	public void setCommentDAO(CommentDAO dao){
+		this.dao = dao;
+	}
 	
 	
 	@RequestMapping(value="/Comment/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -46,6 +52,11 @@ public class CommentController {
 	@ResponseBody // use this to write to response
 	public void delete(@Valid @RequestBody Comment comment){
 		dataService.deleteComment(comment);
-	} 
+	}
+	@RequestMapping(value="/Comment/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Comment> findAll(){
+		return dao.findAll();
+	}
 	
 }

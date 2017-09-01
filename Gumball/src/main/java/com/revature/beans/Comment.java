@@ -52,16 +52,16 @@ public class Comment {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	@JsonIgnore
-	public Reader getReader() {
-		return reader;
+	
+	public int getReader() {
+		return reader.getId();
 	}
 	public void setReader(Reader reader) {
 		this.reader = reader;
 	}
-	@JsonIgnore
-	public Article getArticle() {
-		return article;
+	
+	public int getArticle() {
+		return article.getId();
 	}
 	public void setArticle(Article article) {
 		this.article = article;
