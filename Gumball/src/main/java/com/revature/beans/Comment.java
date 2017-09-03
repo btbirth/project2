@@ -54,6 +54,7 @@ public class Comment {
 	}
 	
 
+	
 	public String getReader() {
 		return reader.getUsername();
 
@@ -62,16 +63,18 @@ public class Comment {
 		this.reader = reader;
 	}
 	
+
+	
 	public int getArticle() {
 		return article.getId();
 	}
-	public void setArticle(Article article) {
-		this.article = article;
+	public void setArticle(int article) {
+		System.out.println("this is the article + "  +  article);
+		this.article = new Article(article);
 	}
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", body=" + body + "]";
 	}
-	
 	
 }

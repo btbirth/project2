@@ -1,6 +1,6 @@
 angular.module("magazineAPI",["ngRoute"]);
 angular.module("magazineAPI").controller("allArticleCtrl",
-		function($scope, $http,$location){
+		function($scope, $http){
 			
 			$http({
 				method : "GET",
@@ -9,14 +9,33 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 				$scope.articles = response.data;
 				
 			});
-			$scope.makeComment = function(){
+			$http({
+				method : "GET",
+				url :"/Gumball/Article/favorites"			
+			}).then(function(response){
+				$scope.favorites = response.data;
+			});
+			
+			$scope.addNewFavorite;
+			$scope.addFavorite = function(articleId){
+				$scope.newFavorite.id = articleId;
+				$http({
+					method : "POST",
+					url : "",
+					data : $scope.newFavorite
+				})
+			};
+
+			$scope.newComment = {};
+			$scope.makeComment = function(articleId){
+				$scope.newComment.article = articleId;
 				console.log($scope.newComment);
 				$http({
 					method : "POST",
 					url : "/Gumball/Comment/create",
 					data: $scope.newComment
 				})
-			}
+			};
 		})
 angular.module("magazineAPI").controller("favoritesCtrl",
 		function($scope, $http ){

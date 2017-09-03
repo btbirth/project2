@@ -57,7 +57,10 @@ public class Article {
 	public Article() {
 		super();
 	}
-
+	public Article(int id) {
+		super();
+		this.id=id;
+	}
 	public Article(String title, String body, Author author, Blob image, Set<Reader> readers, Set<Comment> comments) {
 		super();
 		this.title = title;
