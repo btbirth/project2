@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.beans.Article;
 import com.revature.beans.Author;
 import com.revature.beans.Comment;
 import com.revature.beans.Reader;
@@ -35,7 +36,11 @@ public class CommentController {
 	@RequestMapping(value="/Comment/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void create(@Valid @RequestBody Comment comment, HttpServletRequest req){
+		
+		
 		comment.setReader((Reader)req.getSession().getAttribute("user"));
+
+		
 		dataService.createComment(comment);
 	} //auto converts JSON->object
 	

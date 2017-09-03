@@ -32,12 +32,10 @@
 						</span>
 					</div>
 					<div class="modal-footer">
-						<form ng-submit="makeComment()" id="{{article.id}}">
-							<input type="submit" value="create"/>
-							<input ng-model="newComment.article.id" type="hidden"/>
-						</form>
-						<textarea rows="4" cols="50" name="comment" form="{{article.id}}" placeholder="comment here..." ng-model="newComment.body">
-						</textarea>
+						<form ng-submit="makeComment(article.id)" id="{{article.id}}">
+							<textarea rows="4" cols="50" name="comment" form="{{article.id}}" placeholder="comment here..." ng-model="newComment.body"></textarea>
+							<input type="submit" value="comment" data-dismiss="modal"/>
+						</form>	
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>

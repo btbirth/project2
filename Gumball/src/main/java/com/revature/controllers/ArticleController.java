@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,12 +66,23 @@ public class ArticleController {
 		List<Article> favorites = new ArrayList<Article>(reader.getFavorites());
 		return favorites;
 	}
-	
 	@RequestMapping(value="/Article/findArticle", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Article findArticle(@Valid @RequestBody Article article){
 		//return dao.findAllArticles();
 		 return dataService.viewArticle(article);
+	}
+	@RequestMapping(value="/Article/addFavorite", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<Void> addFavorite(@Valid @RequestBody Article article,HttpServletRequest req){
+		dataService.addFavorite((Reader)req.getSession().getAttribute("user"), article);
+		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+	}
+	@RequestMapping(value="/Article/removeFavorite", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<Void> removeFavorite(@Valid @RequestBody Article article,HttpServletRequest req){
+		dataService.removeFavorite((Reader)req.getSession().getAttribute("user"), article);
+		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 	}
 	
 	

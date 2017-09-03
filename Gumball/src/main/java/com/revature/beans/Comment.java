@@ -53,23 +53,25 @@ public class Comment {
 		this.body = body;
 	}
 	
+	
 	public String getReader() {
 		return reader.getUsername();
 	}
 	public void setReader(Reader reader) {
 		this.reader = reader;
 	}
-	@JsonIgnore
-	public Article getArticle() {
-		return article;
+	
+	
+	public int getArticle() {
+		return article.getId();
 	}
-	public void setArticle(Article article) {
-		this.article = article;
+	public void setArticle(int article) {
+		System.out.println("this is the article + "  +  article);
+		this.article = new Article(article);
 	}
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", body=" + body + "]";
 	}
-	
 	
 }
