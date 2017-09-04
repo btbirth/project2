@@ -30,16 +30,19 @@
 </head>
 <body ng-app="magazineAPI">
 
-<p class="layout"> I am here Gumball 17</p>
+<p class="layout">Gumball 17</p>
+
+<div class="container">
 			<div class="centerMeNowGod">
 				<div class="btn-group" role="group">
 					<a type="button" class="btn btn-default" href="#">All Articles</a>
 					<a type="button" class="btn btn-default" href="#favorites">Favorite Articles</a>
 				</div>
+				<form style="float: right" action="/Gumball/Reader/logout" method="POST"><button type="submit" class="btn btn-danger" >Logout</button></form>
 			</div>
+	<div class="jumbotron" ng-view>
 
-<div ng-view>
-
+	</div>
 </div>
 </body>
 </html>

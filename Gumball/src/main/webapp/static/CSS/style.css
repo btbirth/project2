@@ -19,6 +19,12 @@ body{
 text-align: center;
 margin: auto;	
 }
+
+.articleView{
+	background-color: #eee;
+	border-bottom-color: #e8661b;
+}
+
 .bodyView{
 	background-color: #eee;
 	border-radius: 5px;

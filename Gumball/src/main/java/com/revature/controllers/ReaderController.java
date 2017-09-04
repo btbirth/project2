@@ -70,7 +70,7 @@ public class ReaderController {
 	@RequestMapping(value="/Reader/logout", method=RequestMethod.POST)
 	public String logout(HttpServletRequest req) {
 		req.getSession().invalidate();
-		return "redirect:/pages/index.html";
+		return "redirect:/pages/home.html";
 	}
 	
 	@RequestMapping(value="/Gumball/Reader/create", method=RequestMethod.POST)

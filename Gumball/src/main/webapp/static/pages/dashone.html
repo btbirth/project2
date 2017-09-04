@@ -1,6 +1,6 @@
-<div class="container">
 
-	<div ng-repeat="article in articles" class="jumbotron" ng-app>
+
+	<div ng-repeat="article in articles" class="jumbotron articleView" ng-app>
 		<h1>{{article.title}}</h1>
 		<h2>Written by: {{article.author}}{{username}}</h2>
 		<h2>Submitted on: {{article.created}}</h2>
@@ -46,5 +46,6 @@
           <span class="glyphicon glyphicon-star-empty"></span>
         </a>
         </div>
+        <hr>
 	</div>
-</div>
+
