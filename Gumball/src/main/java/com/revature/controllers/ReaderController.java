@@ -67,6 +67,11 @@ public class ReaderController {
 		return "redirect:/pages/home.html";
 		
 	}
+	@RequestMapping(value="/Reader/logout", method=RequestMethod.POST)
+	public String logout(HttpServletRequest req) {
+		req.getSession().invalidate();
+		return "redirect:/pages/index.html";
+	}
 	
 	@RequestMapping(value="/Gumball/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
@@ -102,9 +107,4 @@ public class ReaderController {
 		return dao.findAll();
 	}
 	
-	@RequestMapping(value="/Reader/logout", method= RequestMethod.POST)
-	@ResponseBody
-	public void logout(HttpServletRequest req) {
-		req.getSession().removeAttribute("user");
-	}
 }

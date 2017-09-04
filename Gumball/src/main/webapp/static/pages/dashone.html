@@ -35,11 +35,16 @@
 						<form ng-submit="makeComment(article.id)" id="{{article.id}}">
 							<textarea rows="4" cols="50" name="comment" form="{{article.id}}" placeholder="comment here..." ng-model="newComment.body"></textarea>
 							<input type="submit" value="comment" data-dismiss="modal"/>
-						</form>	
+						</form>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div ng-if="checkFavs(article.id,favorites)">
+		<a href="#"  ng-click="addFavorite(article.id)">
+          <span class="glyphicon glyphicon-star-empty"></span>
+        </a>
+        </div>
 	</div>
 </div>
