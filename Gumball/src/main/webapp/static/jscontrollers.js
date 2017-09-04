@@ -1,6 +1,28 @@
 angular.module("magazineAPI",["ngRoute"]);
 angular.module("magazineAPI").controller("allArticleCtrl",
 		function($scope, $http){
+			$scope.newFavorite = {};
+			$scope.addFavorite = function(articleId){
+				console.log(articleId)
+				$scope.newFavorite.id = articleId;
+				$http({
+					method : "POST",
+					url : "/Gumball/Article/addFavorite",
+					data : $scope.newFavorite
+				})
+			};
+			$scope.checkFavs = function(articleId,favs){
+				
+				count = 0;
+				for(count = 0; count<favs.length; count++){
+					
+					if(articleId == favs[count].id){
+						return false;
+					}
+				}
+				return true;
+			}
+	
 			
 			$http({
 				method : "GET",
@@ -11,20 +33,15 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 			});
 			$http({
 				method : "GET",
-				url :"/Gumball/Article/favorites"			
+				url :"/Gumball/Article/favorites"	 		
 			}).then(function(response){
 				$scope.favorites = response.data;
+
+				
 			});
 			
-			$scope.addNewFavorite;
-			$scope.addFavorite = function(articleId){
-				$scope.newFavorite.id = articleId;
-				$http({
-					method : "POST",
-					url : "",
-					data : $scope.newFavorite
-				})
-			};
+			
+			
 
 			$scope.newComment = {};
 			$scope.makeComment = function(articleId){

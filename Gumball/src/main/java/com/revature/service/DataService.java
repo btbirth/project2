@@ -96,12 +96,16 @@ public class DataService implements ApplicationContextAware {
 		dao.Delete(comment);
 	}
 
-	public void addFavorite(Reader reader, Article article) {
-		ReaderDAO dao = context.getBean(ReaderDAO.class);
+	public Reader addFavorite(Reader user, Article article) {
+		ReaderDAO rdao = context.getBean(ReaderDAO.class);
+		ArticleDAO adao = context.getBean(ArticleDAO.class);
+		Reader reader = rdao.findById(user.getId());
+		Article favorite = adao.findArticleById(article.getId());
 		Set<Article> favorites = reader.getFavorites();
-		favorites.add(article);
+		favorites.add(favorite);
 		reader.setFavorites(favorites);
-		dao.update(reader);
+		rdao.update(reader);
+		return reader;
 	}
 	public void removeFavorite(Reader reader, Article article) {
 		ReaderDAO dao = context.getBean(ReaderDAO.class);

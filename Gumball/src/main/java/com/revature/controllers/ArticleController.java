@@ -75,8 +75,12 @@ public class ArticleController {
 	@RequestMapping(value="/Article/addFavorite", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Void> addFavorite(@Valid @RequestBody Article article,HttpServletRequest req){
-		dataService.addFavorite((Reader)req.getSession().getAttribute("user"), article);
-		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		
+		System.out.println(article);
+		Reader updatedUser = dataService.addFavorite((Reader)req.getSession().getAttribute("user"), article);
+		req.getSession().invalidate();
+		req.getSession().setAttribute("user", updatedUser);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	@RequestMapping(value="/Article/removeFavorite", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
