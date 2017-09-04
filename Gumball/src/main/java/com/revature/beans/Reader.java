@@ -58,7 +58,7 @@ public class Reader {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		CreditCardNumber = creditCardNumber;
+		this.CreditCardNumber = creditCardNumber;
 	}
 	public Reader( String username, String email, String password, String creditCardNumber,
 			Set<Article> favorites, Set<Comment> comments) {
@@ -66,7 +66,7 @@ public class Reader {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		CreditCardNumber = creditCardNumber;
+		this.CreditCardNumber = creditCardNumber;
 		this.favorites = favorites;
 		this.comments = comments;
 	}
@@ -108,7 +108,7 @@ public class Reader {
 	}
 
 	public void setCreditCardNumber(String creditCardNumber) {
-		CreditCardNumber = creditCardNumber;
+		this.CreditCardNumber = creditCardNumber;
 	}
 
 	public Set<Article> getFavorites() {
