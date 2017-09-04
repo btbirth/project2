@@ -2,23 +2,29 @@
 
 <div class="container">
 	<div class="jumbotron">
-		<form action="" method="post" ng-submit="createArticle()">
+		<form ng-submit="createArticle()">
 			<div class="form-group">
-				<label for="exampleInputPassword1">Title:</label> <input type="text"
+				<label for="title">Title:</label> <input type="text"
 					class="form-control" id="title" name="title"
-					placeholder="Enter Title" ng-model="createArticle.title">
+					placeholder="Enter Title" ng-model="newArticle.title">
 			</div>
 
 			<div class="form-group">
-				<label for="exampleTextarea">Body:</label>
+				<label for="body">Body:</label>
 				<textarea class="form-control" id="body" rows="3"
-					placeholder="Enter Body" ng-model="createArticle.body"></textarea>
+					placeholder="Enter Body" ng-model="newArticle.body"></textarea>
 			</div>
 
 			<div class="form-group">
 				<label for="imageFile">Image</label> <input type="file"
 					class="form-control-file" id="imageFile"
-					aria-describedby="fileHelp" ng-model="createArticle.image">
+					aria-describedby="fileHelp" >
+			</div>
+			<h1>here</h1>
+			<div class="form-group">
+				<label for="date">Created:</label> <input type="text"
+					class="form-control" id="date" name="date"
+					placeholder="YYYY-MM-DD" ng-model="newArticle.created">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Submit</button>
