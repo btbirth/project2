@@ -23,11 +23,11 @@ public class BusinessServiceTest {
 		Author goodUserGoodPass = new Author("The Writer ", null, "password", null);
 		Author goodUserBadPass = new Author("The Writer", "a", "passwor", null);
 		Author badUser = new Author("The Write", "a", "password", null);
-		Author author = service.authorValidate(goodUserGoodPass);
+		Author author = service.authorValidate(goodUserGoodPass.getUsername(), goodUserGoodPass.getPassword());
 		System.out.println(author);
 		Assert.assertNotNull(author);
-		Assert.assertNull(service.authorValidate(goodUserBadPass));
-		Assert.assertNull(service.authorValidate(badUser));
+		Assert.assertNull(service.authorValidate(goodUserBadPass.getUsername(), goodUserBadPass.getPassword()));
+		Assert.assertNull(service.authorValidate(badUser.getUsername(), badUser.getPassword()));
 	}
 	@Test
 	public void testReaderLogin() {
