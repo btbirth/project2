@@ -55,7 +55,7 @@ public class AuthorController {
 		if(user != null){
 			System.out.println("not a null user");
 			req.getSession().setAttribute("user", user);
-			return "redirect:/pages/index.html";
+			return "redirect:/pages/authorIndex.html";
 		}
 		return "redirect:/pages/home.html";
 	}

@@ -58,6 +58,12 @@ public class ArticleController {
 		System.out.println(req.getSession().getAttribute("user"));
 		return dataService.viewAllArticles();
 	}
+	@RequestMapping(value="/Article/myArticles", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Article> findArticles(HttpServletRequest req){
+		System.out.println(req.getSession().getAttribute("user"));
+		return dataService.findAuthorArticles((Author)req.getSession().getAttribute("user"));
+	}
 	@RequestMapping(value="/Article/favorites", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Article> getFavorites(HttpServletRequest req){
@@ -66,6 +72,7 @@ public class ArticleController {
 		List<Article> favorites = new ArrayList<Article>(reader.getFavorites());
 		return favorites;
 	}
+	
 	@RequestMapping(value="/Article/findArticle", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Article findArticle(@Valid @RequestBody Article article){

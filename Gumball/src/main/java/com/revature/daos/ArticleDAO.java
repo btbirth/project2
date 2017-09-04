@@ -58,5 +58,13 @@ public class ArticleDAO {
 				.add(Restrictions.eq("id", id)).list().get(0);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Article> findArticleByAuthor(Author author){
+		return  sessionFactory.getCurrentSession()
+				.createCriteria(Article.class)
+				.add(Restrictions.eq("author", author)).list();
+	}
+	
 	
 }
