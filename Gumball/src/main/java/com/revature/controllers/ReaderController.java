@@ -74,7 +74,7 @@ public class ReaderController {
 		return "redirect:/pages/home.html";
 	}
 	
-	@RequestMapping(value="/Gumball/Reader/create", method=RequestMethod.POST)
+	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
 	public ModelAndView create(
 			@RequestParam(value="username", required=true) String username, 
