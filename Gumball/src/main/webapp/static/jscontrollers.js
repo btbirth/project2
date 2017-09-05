@@ -7,7 +7,7 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 				$scope.newFavorite.id = articleId;
 				$http({
 					method : "POST",
-					url : "/Gumball/Article/addFavorite",
+					url : "/Article/addFavorite",
 					data : $scope.newFavorite
 				})
 			};
@@ -36,7 +36,7 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 			
 			$http({
 				method : "GET",
-				url : "/Gumball/Article/all"
+				url : "/Article/all"
 			}).then(function(response){
 				$scope.articles = response.data;
 				
@@ -44,7 +44,7 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 			
 			$http({
 				method : "GET",
-				url :"/Gumball/Article/favorites"	 		
+				url :"/Article/favorites"	 		
 			}).then(function(response){
 				$scope.favorites = response.data;			
 			});
