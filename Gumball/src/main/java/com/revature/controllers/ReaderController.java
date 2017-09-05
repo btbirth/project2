@@ -74,20 +74,18 @@ public class ReaderController {
 		return "redirect:/pages/home.html";
 	}
 	
-	@RequestMapping(value="/Gumball/Reader/create", method=RequestMethod.POST)
+	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
-	public ModelAndView create(
+	public String create(
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="email", required=true) String email, 
 			@RequestParam(value="password", required=true) String password, 
 			@RequestParam(value="ccn", required=true) String creditCardNumber) 
 					throws IOException{
-		dataService.createReader(username,email,BCrypt.hashpw(password, BCrypt.gensalt()),BCrypt.hashpw(creditCardNumber, BCrypt.gensalt()));
-		//resp.sendRedirect("/Gumball/home.html");
+		dataService.createReader(username,email,BCrypt.hashpw(password, BCrypt.gensalt()),BCrypt.hashpw(creditCardNumber, BCrypt.gensalt()));		
 		
-		//resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());
-		return new ModelAndView("home");
-		//return new ResponseEntity<Object>("",dataService.createReader(username,email,password,creditCardNumber));	
+		return "redirect:/pages/home.html";
+			
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Reader/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)

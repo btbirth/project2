@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -60,10 +61,14 @@ public class AuthorController {
 		return "redirect:/pages/home.html";
 	}
 	
-	@RequestMapping(value="/Author/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Author/create", method=RequestMethod.POST)
 	@ResponseBody // use this to write to response
-	public void create(@Valid @RequestBody Author author){
-		dataService.createAuthor(author);
+	public String create(			
+			@RequestParam(value="username", required=true) String username, 
+			@RequestParam(value="email", required=true) String email, 
+			@RequestParam(value="password", required=true) String password){
+		dataService.createAuthor(username, email, BCrypt.hashpw(password, BCrypt.gensalt()));
+		return "redirect:/pages/home.html";
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Author/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)

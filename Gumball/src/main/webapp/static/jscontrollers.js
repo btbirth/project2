@@ -22,27 +22,6 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 				}
 				return true;
 			}
-	
-			
-			$http({
-				method : "GET",
-				url : "/Gumball/Article/all"
-			}).then(function(response){
-				$scope.articles = response.data;
-				
-			});
-			$http({
-				method : "GET",
-				url :"/Gumball/Article/favorites"	 		
-			}).then(function(response){
-				$scope.favorites = response.data;
-
-				
-			});
-			
-			
-			
-
 			$scope.newComment = {};
 			$scope.makeComment = function(articleId){
 				$scope.newComment.article = articleId;
@@ -53,6 +32,27 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 					data: $scope.newComment
 				})
 			};
+	
+			
+			$http({
+				method : "GET",
+				url : "/Gumball/Article/all"
+			}).then(function(response){
+				$scope.articles = response.data;
+				
+			});
+			
+			$http({
+				method : "GET",
+				url :"/Gumball/Article/favorites"	 		
+			}).then(function(response){
+				$scope.favorites = response.data;			
+			});
+			
+			
+			
+
+
 		})
 angular.module("magazineAPI").controller("favoritesCtrl",
 		function($scope, $http ){

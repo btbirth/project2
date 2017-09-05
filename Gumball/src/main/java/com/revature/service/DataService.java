@@ -75,7 +75,8 @@ public class DataService implements ApplicationContextAware {
 		ReaderDAO dao = context.getBean(ReaderDAO.class);
 		dao.delete(reader);
 	}
-	public void createAuthor(Author author) {
+	public void createAuthor(String username, String email, String password) {
+		Author author = new Author(username, email, password);
 		AuthorDAO dao = context.getBean(AuthorDAO.class);
 		dao.create(author);
 	}
