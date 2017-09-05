@@ -41,7 +41,8 @@ public class ArticleController {
 	@ResponseBody // use this to write to response
 	public void create(@Valid @RequestBody Article article, HttpServletRequest req ){
 		article.setAuthor((Author)req.getSession().getAttribute("user"));
-		dataService.createArticle( article);
+		
+		dataService.createArticle(article);
 	} //auto converts JSON->object
 	
 	@RequestMapping(value="/Article/update", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE)

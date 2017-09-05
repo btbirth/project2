@@ -91,8 +91,9 @@ public class AuthorController {
 	
 	@RequestMapping(value="/Author/logout", method= RequestMethod.POST)
 	@ResponseBody
-	public void logout(HttpServletRequest req) {
+	public String logout(HttpServletRequest req) {
 		req.getSession().removeAttribute("user");
+		return "redirect:/pages/home.html";
 	}
 	
 }
