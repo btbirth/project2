@@ -3,6 +3,7 @@ package com.revature.serviceTest;
 import org.junit.Assert;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,6 +19,7 @@ public class BusinessServiceTest {
 		context = new ClassPathXmlApplicationContext("dao-beans.xml");
 	}
 	@Test
+	@Ignore
 	public void testAuthorLogin() {
 		BusinessService service = context.getBean(BusinessService.class);
 		Author goodUserGoodPass = new Author("The Writer ", null, "password", null);
@@ -30,6 +32,7 @@ public class BusinessServiceTest {
 		Assert.assertNull(service.authorValidate(badUser.getUsername(), badUser.getPassword()));
 	}
 	@Test
+	@Ignore
 	public void testReaderLogin() {
 		BusinessService service = context.getBean(BusinessService.class);
 		Reader goodUserGoodPass = new Reader("Banops", null, "password", null, null, null);
