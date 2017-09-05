@@ -36,6 +36,7 @@ public class ArticleDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testFindAll(){
 		LOGGER.setLevel(Level.INFO);
 		ArticleDAO bean = context.getBean(ArticleDAO.class);
@@ -44,6 +45,7 @@ public class ArticleDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testFindOne(){
 		ArticleDAO bean = context.getBean(ArticleDAO.class);
 		Article article = bean.findArticleById(1);

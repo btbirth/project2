@@ -42,6 +42,7 @@ public class ReaderDAOTest {
 	
 	
 	@Test
+	@Ignore
 	public void testFindByName() {
 		ReaderDAO bean = context.getBean(ReaderDAO.class);
 		Reader reader = bean.findByUsername("Banops");

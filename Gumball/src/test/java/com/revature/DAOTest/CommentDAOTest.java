@@ -65,6 +65,7 @@ public class CommentDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testFindAllByArticle() {
 		ArticleDAO articleDAO = context.getBean(ArticleDAO.class);
 		Article article = articleDAO.findArticleById(1);
