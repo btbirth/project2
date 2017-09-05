@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -81,7 +82,7 @@ public class ReaderController {
 			@RequestParam(value="password", required=true) String password, 
 			@RequestParam(value="ccn", required=true) String creditCardNumber) 
 					throws IOException{
-		dataService.createReader(username,email,password,creditCardNumber);
+		dataService.createReader(username,email,BCrypt.hashpw(password, BCrypt.gensalt()),BCrypt.hashpw(creditCardNumber, BCrypt.gensalt()));
 		//resp.sendRedirect("/Gumball/home.html");
 		
 		//resp.setStatus(dataService.createReader(username,email,password,creditCardNumber).value());

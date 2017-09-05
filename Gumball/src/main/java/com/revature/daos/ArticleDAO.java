@@ -3,6 +3,7 @@ package com.revature.daos;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Isolation;
@@ -63,7 +64,9 @@ public class ArticleDAO {
 	public List<Article> findArticleByAuthor(Author author){
 		return  sessionFactory.getCurrentSession()
 				.createCriteria(Article.class)
-				.add(Restrictions.eq("author", author)).list();
+				.add(Restrictions.eq("author", author))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+				.list();
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.revature.service;
 
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,6 +21,9 @@ public class BusinessService implements ApplicationContextAware {
 		AuthorDAO aDAO = context.getBean(AuthorDAO.class);
 		Author user = aDAO.findByUsername(username);
 		if(user!=null) {
+//		if(BCrypt.checkpw(password, user.getPassword())){
+//				return user;
+//			}
 			if(user.getPassword().equals(password)) {
 				return user;
 			}
@@ -30,6 +34,9 @@ public class BusinessService implements ApplicationContextAware {
 		ReaderDAO aDAO = context.getBean(ReaderDAO.class);
 		Reader user = aDAO.findByUsername(username);
 		if(user!=null) {
+//			if(BCrypt.checkpw(password, user.getPassword())){
+//			return user;
+//		}
 			if(user.getPassword().equals(password)) {
 				return user;
 			}

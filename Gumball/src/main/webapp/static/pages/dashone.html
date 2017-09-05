@@ -1,4 +1,5 @@
-	<div ng-repeat="article in articles" class="jumbotron articleView" ng-app>
+<div class="container">
+	<div ng-repeat="article in articles" class="jumbotron" ng-app>
 		<h1>{{article.title}}</h1>
 		<h2>Written by: {{article.author}}{{username}}</h2>
 		<h2>Submitted on: {{article.created}}</h2>
@@ -12,7 +13,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<!-- Head -->
-						<h3>Commets :</h3>
+						<h3>Comments :</h3>
 					</div>
 					<div class="modal-body">
 						<!-- Body(Comments) -->
@@ -44,6 +45,5 @@
           <span class="glyphicon glyphicon-star-empty"></span>
         </a>
         </div>
-        <hr>
 	</div>
-
+</div>

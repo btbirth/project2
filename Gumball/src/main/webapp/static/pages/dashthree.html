@@ -1,0 +1,42 @@
+
+<div ng-repeat="article in articles" class="jumbotron articleView"
+	ng-app>
+	<h1>{{article.title}}</h1>
+	<h2>Written by: {{article.author}}{{username}}</h2>
+	<h2>Submitted on: {{article.created}}</h2>
+	<p>{{article.body}}</p>
+	<button type="button" class="btn" data-toggle="modal"
+		data-target="#{{article.id}}">View</button>
+	<!-- Modal -->
+	<div id="{{article.id}}" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- Head -->
+					<h3>Commets :</h3>
+				</div>
+				<div class="modal-body">
+					<!-- Body(Comments) -->
+					<hr>
+					<span ng-repeat="comment in article.comments">
+						<table>
+							<tr>
+								<h4>{{comment.reader}} Says:</h4>
+							</tr>
+							<tr>
+								<p>{{comment.body}}</p>
+							</tr>
+						</table>
+						<hr>
+					</span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
+
