@@ -1,9 +1,11 @@
 package com.revature.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.revature.beans.Article;
 import com.revature.beans.Author;
@@ -54,8 +57,10 @@ public class ArticleController {
 	
 	@RequestMapping(value="/Article/all", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Article> findAll(HttpServletRequest req){
-		System.out.println(req.getSession().getAttribute("user"));
+	public List<Article> findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		if(req.getSession().getAttribute("user") == null) {
+			resp.sendRedirect("/pages/home.html");		
+		}	
 		return dataService.viewAllArticles();
 	}
 	@RequestMapping(value="/Article/myArticles", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
@@ -67,7 +72,7 @@ public class ArticleController {
 	@RequestMapping(value="/Article/favorites", method= RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Article> getFavorites(HttpServletRequest req){
-		System.out.println(req.getSession().getAttribute("user"));
+		
 		Reader reader = (Reader)req.getSession().getAttribute("user");
 		List<Article> favorites = new ArrayList<Article>(reader.getFavorites());
 		return favorites;
@@ -83,7 +88,7 @@ public class ArticleController {
 	@ResponseBody
 	public ResponseEntity<Void> addFavorite(@Valid @RequestBody Article article,HttpServletRequest req){
 		
-		System.out.println(article);
+		
 		Reader updatedUser = dataService.addFavorite((Reader)req.getSession().getAttribute("user"), article);
 		req.getSession().invalidate();
 		req.getSession().setAttribute("user", updatedUser);
@@ -96,6 +101,5 @@ public class ArticleController {
 		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 	}
 	
-	
-	
+
 }
