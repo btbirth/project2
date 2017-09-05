@@ -46,6 +46,15 @@ public class Author {
 		this.articles = articles;
 	}
 
+
+
+	public Author(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}

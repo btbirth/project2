@@ -42,7 +42,7 @@ public class CommentController {
 	@RequestMapping(value="/Comment/create", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody // use this to write to response
 	public void create(@Valid @RequestBody Comment comment, HttpServletRequest req){
-		
+		System.out.println("here comment create");
 		
 		comment.setReader((Reader)req.getSession().getAttribute("user"));
 

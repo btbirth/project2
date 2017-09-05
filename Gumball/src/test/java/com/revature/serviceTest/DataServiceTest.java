@@ -32,7 +32,7 @@ public class DataServiceTest {
 	public void TestCreateAuthor() {
 		DataService service = context.getBean(DataService.class);
 		Author author = new Author("WriterTwo", "writer@two.com", "password", null);
-		service.createAuthor(author);
+		service.createAuthor("WriterTwo", "writer@two.com", "password");
 		AuthorDAO checker = context.getBean(AuthorDAO.class);
 		Assert.assertNotNull(checker.findByUsername(author.getUsername()));
 		System.out.println("Created");

@@ -66,6 +66,23 @@
 				</li>
 			</ul>
 		</li>
+		<li class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button"
+				id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="true">
+				Create Author Account <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+				<li>
+					<form action="/Gumball/Author/create" method="POST">
+						<input type="text" placeholder="username" name="username" /> <input
+							type="email" placeholder="email" name="email" /> <input
+							type="password" placeholder="password" name="password" /> 
+						<button type="submit" class="btn btn-success">create</button>
+					</form>
+				</li>
+			</ul>
+		</li>
 	</ul>
 
 </body>

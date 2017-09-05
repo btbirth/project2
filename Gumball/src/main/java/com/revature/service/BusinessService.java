@@ -21,12 +21,12 @@ public class BusinessService implements ApplicationContextAware {
 		AuthorDAO aDAO = context.getBean(AuthorDAO.class);
 		Author user = aDAO.findByUsername(username);
 		if(user!=null) {
-//		if(BCrypt.checkpw(password, user.getPassword())){
-//				return user;
-//			}
-			if(user.getPassword().equals(password)) {
+		if(BCrypt.checkpw(password, user.getPassword())){
 				return user;
 			}
+//			if(user.getPassword().equals(password)) {
+//				return user;
+//			}
 		}
 		return null;
 	}
@@ -34,12 +34,12 @@ public class BusinessService implements ApplicationContextAware {
 		ReaderDAO aDAO = context.getBean(ReaderDAO.class);
 		Reader user = aDAO.findByUsername(username);
 		if(user!=null) {
-//			if(BCrypt.checkpw(password, user.getPassword())){
-//			return user;
-//		}
-			if(user.getPassword().equals(password)) {
+			if(BCrypt.checkpw(password, user.getPassword())){
 				return user;
 			}
+//			if(user.getPassword().equals(password)) {
+//				return user;
+//			}
 		}
 		return null;
 	}
