@@ -62,7 +62,6 @@ public class AuthorController {
 	}
 	
 	@RequestMapping(value="/Author/create", method=RequestMethod.POST)
-	@ResponseBody // use this to write to response
 	public String create(			
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="email", required=true) String email, 
@@ -90,7 +89,6 @@ public class AuthorController {
 	}	
 	
 	@RequestMapping(value="/Author/logout", method= RequestMethod.POST)
-	@ResponseBody
 	public String logout(HttpServletRequest req) {
 		req.getSession().removeAttribute("user");
 		return "redirect:/pages/home.html";

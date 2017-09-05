@@ -75,7 +75,7 @@ public class ReaderController {
 	}
 	
 	@RequestMapping(value="/Reader/create", method=RequestMethod.POST)
-	@ResponseBody // use this to write to response
+	
 	public String create(
 			@RequestParam(value="username", required=true) String username, 
 			@RequestParam(value="email", required=true) String email, 
