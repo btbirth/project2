@@ -3,7 +3,7 @@ angular.module("magazineAPI").controller("createCtrl", function($scope, $http){
 	$scope.createArticle  = function(){
 		$http({
 				method:"POST",
-				url: "/Gumball/Article/create",
+				url: "/Article/create",
 				data:$scope.newArticle
 		}).then(function(response){
 			console.log(response.status);
@@ -14,7 +14,7 @@ angular.module("magazineAPI").controller("myArticlesCtrl",
 		function($scope, $http){
 			$http({
 				method: "GET",
-				url : "/Gumball/Article/myArticles"
+				url : "/Article/myArticles"
 			
 			}).then(function(response){
 				$scope.articles = response.data;

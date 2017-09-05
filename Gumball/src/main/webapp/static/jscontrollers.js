@@ -28,7 +28,7 @@ angular.module("magazineAPI").controller("allArticleCtrl",
 				console.log($scope.newComment);
 				$http({
 					method : "POST",
-					url : "/Gumball/Comment/create",
+					url : "/Comment/create",
 					data: $scope.newComment
 				})
 			};
@@ -59,7 +59,7 @@ angular.module("magazineAPI").controller("favoritesCtrl",
 			
 			$http({
 				method : "GET",
-				url : "/Gumball/Article/favorites"
+				url : "/Article/favorites"
 			}).then(function(response){
 				$scope.articles = response.data;
 				console.log(response.data)
