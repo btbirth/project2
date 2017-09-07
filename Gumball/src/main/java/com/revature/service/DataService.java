@@ -2,6 +2,9 @@ package com.revature.service;
 
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +35,7 @@ public class DataService implements ApplicationContextAware {
 	}
 	public void createArticle(Article article) {
 		ArticleDAO dao = context.getBean(ArticleDAO.class);
+		article.setCreated(new Date());
 		dao.create(article);
 	}
 	public List<Article> viewAllArticles(){
